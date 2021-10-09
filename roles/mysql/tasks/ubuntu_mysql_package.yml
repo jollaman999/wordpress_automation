@@ -1,0 +1,6 @@
+- name: Update and Install Package for MySQL
+  apt:
+    name: mysql-server, mysql-client, python3-pymysql
+    update_cache: true
+    state: present
+

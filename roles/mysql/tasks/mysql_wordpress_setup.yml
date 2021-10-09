@@ -1,0 +1,37 @@
+- name: mysql change root password
+  mysql_user:
+    name: root
+    login_user: root
+    login_unix_socket: "{{ mysql_socket }}"
+    login_password: ""
+    password: "{{ mysql_root_password }}"
+    state: present
+  ignore_errors: yes
+
+- name: Create new databases with names 'wordpress'
+  mysql_db:
+    name: "{{ mysql_wordpress_db_name }}"
+    login_user: root
+    login_unix_socket: "{{ mysql_socket }}"
+    login_password: "{{ mysql_root_password }}"
+    state: present
+
+- name: Adding user 'wordpress'
+  mysql_user:
+    name: "{{ mysql_wordpress_user_name }}"
+    login_user: root
+    login_unix_socket: "{{ mysql_socket }}"
+    login_password: "{{ mysql_root_password }}"
+    password: "{{ mysql_wordpress_user_password }}"
+    priv: "{{ mysql_wordpress_user_name }}.*:ALL,GRANT"
+    host: "%"
+    state: present
+  notify:
+  - Restart MySQL Service
+
+- name: Copy wordpress default config
+  template:
+    src: 'templates/{{ wordpress_db_config_file }}.j2'
+    dest: '/etc/wordpress/{{ wordpress_db_config_file }}'
+    backup: true
+

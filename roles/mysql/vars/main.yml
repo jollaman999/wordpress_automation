@@ -1,0 +1,7 @@
+mysql_socket: /var/run/mysqld/mysqld.sock
+mysql_root_password: P@assWord!
+mysql_wordpress_db_name: wordpress
+mysql_wordpress_user_name: wordpress
+mysql_wordpress_user_password: W@rdPres$
+
+wordpress_db_config_file: config-default.php

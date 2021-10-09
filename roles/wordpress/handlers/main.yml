@@ -10,7 +10,7 @@
     dest: '/etc/apache2/mods-enabled/rewrite.load'
     state: link
 
-- name: Restart Service
+- name: Restart Apache2 Service
   service:
     name: apache2
     state: restarted

@@ -1,4 +1,4 @@
-Alias /{{ apache2_wordpress_root }} {{ wordpress_installation_path }}
+Alias {{ apache2_wordpress_root }} {{ wordpress_installation_path }}
  <Directory {{ wordpress_installation_path }}>
   Options FollowSymLinks
   AllowOverride Limit Options FileInfo

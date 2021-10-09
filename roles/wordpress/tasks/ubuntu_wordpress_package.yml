@@ -5,11 +5,12 @@
     state: present
 
 - name: Copy wordpress config
-  copy:
+  template:
     src: 'templates/{{ wordpress_config_file }}.j2'
     dest: '/etc/apache2/sites-available/{{ wordpress_config_file }}'
     backup: true
+  changed_when: true
   notify:
     - Link wordpress config
     - Link rewrite module
-    - Restart Service
+    - Restart Apache2 Service
