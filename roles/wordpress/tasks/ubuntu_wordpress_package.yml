@@ -6,7 +6,7 @@
 
 - name: Copy wordpress config
   copy:
-    src: 'files/{{ wordpress_config_file }}'
+    src: 'templates/{{ wordpress_config_file }}.j2'
     dest: '/etc/apache2/sites-available/{{ wordpress_config_file }}'
     backup: true
   notify:

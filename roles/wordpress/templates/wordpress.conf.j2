@@ -1,12 +1,12 @@
-Alias /wp /usr/share/wordpress
- <Directory /usr/share/wordpress>
+Alias /{{ apache2_wordpress_root }} {{ wordpress_installation_path }}
+ <Directory {{ wordpress_installation_path }}>
   Options FollowSymLinks
   AllowOverride Limit Options FileInfo
   DirectoryIndex index.php
   Order allow,deny
   Allow from all
 </Directory>
-<Directory /usr/share/wordpress/wp-content>
+<Directory {{ wordpress_installation_path }}/wp-content>
   Options FollowSymLinks
   Order allow,deny
   Allow from all
