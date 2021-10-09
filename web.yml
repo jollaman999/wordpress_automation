@@ -1,0 +1,6 @@
+- name: Deploy Wordpress and MySQL
+  hosts: 192.168.100.101
+  force_handlers: true
+
+  roles:
+    - wordpress

@@ -1,0 +1,17 @@
+- name: Link wordpress config
+  file:
+    src: '/etc/apache2/sites-available/{{ wordpress_config_file }}'
+    dest: '/etc/apache2/sites-enabled/{{ wordpress_config_file }}'
+    state: link
+
+- name: Link rewrite module
+  file:
+    src: '/etc/apache2/mods-available/rewrite.load'
+    dest: '/etc/apache2/mods-enabled/rewrite.load'
+    state: link
+
+- name: Restart Service
+  service:
+    name: apache2
+    state: restarted
+    enabled: true
